@@ -12,12 +12,13 @@ def dijkstra(N):
         dist[i][j] = cost
         for k in range(4):
             ni, nj = i + di[k], j + dj[k]
+            if ni == nj == N-1:
+                return cost + arr[ni][nj]
             if 0 <= ni < n and 0 <= nj < n:
                 new_cost = cost + arr[ni][nj]
                 if dist[ni][nj] <= new_cost:
                     continue
                 heapq.heappush(pq, (new_cost, ni, nj))
-    return dist[N-1][N-1]
 
 
 di = [1, 0, -1, 0]
