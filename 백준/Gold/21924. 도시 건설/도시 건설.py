@@ -11,12 +11,10 @@ def find_set(x):
 
 
 def union(x, y):
-    i = find_set(x)
-    j = find_set(y)
-    if i < j:
-        parent[j] = i
+    if x < y:
+        parent[y] = x
     else:
-        parent[i] = j
+        parent[x] = y
 
 
 n, m = map(int, input().split())
@@ -27,8 +25,10 @@ adj.sort(key=lambda x: x[2])
 cnt = 0
 reduce_cost = 0
 for a, b, c in adj:
-    if find_set(a) != find_set(b):
-        union(a, b)
+    a1 = find_set(a)
+    b1 = find_set(b)
+    if a1 != b1:
+        union(a1, b1)
         cnt += 1
     else:
         reduce_cost += c

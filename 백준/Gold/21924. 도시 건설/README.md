@@ -4,7 +4,7 @@
 
 ### 성능 요약
 
-메모리: 159768 KB, 시간: 1648 ms
+메모리: 184836 KB, 시간: 1244 ms
 
 ### 분류
 
@@ -12,7 +12,7 @@
 
 ### 제출 일자
 
-2025년 4월 23일 11:36:53
+2025년 4월 23일 11:39:23
 
 ### 문제 설명
 
@@ -24,7 +24,7 @@
 
 <p>모든 건물이 도로를 통해 연결되도록 최소한의 도로를 만들려고 한다.</p>
 
-<p style="text-align: center;"><img alt="" src="" style="height: 455px; width: 650px;"></p>
+<p style="text-align: center;"><img alt="" src="https://upload.acmicpc.net/007ab470-3481-47d6-85ec-f5378b3051b3/-/crop/1122x785/404,145/-/preview/" style="height: 455px; width: 650px;"></p>
 
 <p>위 그림에서 건물과 직선으로 표시된 도로, 해당 도로를 만들 때 드는 비용을 표시해놓은 지도이다.</p>
 
