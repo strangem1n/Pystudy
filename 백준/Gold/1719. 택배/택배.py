@@ -4,23 +4,23 @@ input = sys.stdin.readline
 def dijk(start):
     pq = []
     dist = [float('inf')] * (n+1)
-    route = [0] * n
-    heapq.heappush(pq, [0, start, False])
+    route = [0] * (n+1)
+    heapq.heappush(pq, [0, start, '-'])
     while pq:
         cost, node, r = heapq.heappop(pq)
         if cost > dist[node]:
             continue
         dist[node] = cost
-        route[node-1] = r
+        route[node] = r
         for next_cost, next_node in adj[node]:
             if cost + next_cost > dist[next_node]:
                 continue
-            if not r:
+            if r == '-':
                 heapq.heappush(pq, [cost+next_cost, next_node, next_node])
             else:
                 heapq.heappush(pq, [cost+next_cost, next_node, r])
-    route[start-1] = '-'
-    return route
+
+    return route[1:]
 
 n, m = map(int, input().split())
 adj = [[] for _ in range(n+1)]
