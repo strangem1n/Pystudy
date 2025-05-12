@@ -38,16 +38,20 @@ arr = [list(map(int, input().split())) for _ in range(n)]
 used = [[0] * n for _ in range(n)]
 
 cnt = 1
-for i in range(n):
-    for j in range(n):
-        if arr[i][j] == 1:
+for r in range(n):
+    for c in range(n):
+        if arr[r][c] == 1:
             cnt += 1
-            differ(i, j, cnt)
+            differ(r, c, cnt)
 
 
 min_bridge = n ** 2
-for i in range(n):
-    for j in range(n):
-        if arr[i][j] > 1:
-            min_bridge = min(min_bridge, bfs(i, j))
+for r in range(n):
+    for c in range(n):
+        if arr[r][c] > 1:
+            for idx in range(4):
+                nr, nc = r+di[idx], c+dj[idx]
+                if 0 <= nr < n and 0 <= nc < n and arr[nr][nc] == 0:
+                    min_bridge = min(min_bridge, bfs(r, c))
+                    break
 print(min_bridge-1)
