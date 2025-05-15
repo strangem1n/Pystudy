@@ -1,23 +1,5 @@
-import sys
+import sys, bisect
 input = sys.stdin.readline
-
-def binary_search(num):
-    start = 0
-    end = n-1
-    while start < end:
-        if end == start + 1:
-            if abs(num + arr[start]) < abs(num + arr[end]):
-                return start
-            else:
-                return end
-        middle = (start + end) // 2
-        if num + arr[middle] == 0:
-            return middle
-        elif num + arr[middle] > 0:
-            end = middle
-        else:
-            start = middle + 1
-    return middle
 
 n = int(input())
 arr = list(map(int, input().split()))
@@ -30,8 +12,10 @@ else:
     a = b = 0
     min_diff = float('inf')
     for i in range(n):
-        res = binary_search(arr[i])
-        if i == res:
+        res = bisect.bisect_left(arr, -arr[i])
+        if i < res:
+            res -= 1
+        if arr[i] == arr[res]:
             continue
         if min_diff > abs(arr[i] + arr[res]):
             min_diff = abs(arr[i] + arr[res])
