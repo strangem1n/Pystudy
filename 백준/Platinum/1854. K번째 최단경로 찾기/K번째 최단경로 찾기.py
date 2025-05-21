@@ -14,7 +14,13 @@ def dijk():
                 continue
         heapq.heappush(dist[node], -cost)
         for next_cost, next_node in adj[node]:
-            heapq.heappush(pq, (cost+next_cost, next_node))
+            new_cost = cost + next_cost
+            if len(dist[next_node]) >= k:
+                max_cost = -heapq.heappop(dist[next_node])
+                if new_cost >= max_cost:
+                    heapq.heappush(dist[next_node], -max_cost)
+                    continue
+            heapq.heappush(pq, (new_cost, next_node))
 
     for i in range(1, n+1):
         d = dist[i]
