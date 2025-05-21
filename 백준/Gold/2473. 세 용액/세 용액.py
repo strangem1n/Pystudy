@@ -39,5 +39,7 @@ else:
                 if min_diff > diff:
                     min_diff = diff
                     min_list = [a, b, c]
+        if min_diff == 0:
+            break
     min_list.sort()
     print(*min_list)
